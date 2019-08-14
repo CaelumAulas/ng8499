@@ -7,6 +7,7 @@ const rotasApp:Routes = [
   {path: '', component: CaixaDeEntradaComponent},
   {path: 'cadastro', component: CadastroComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'login/:username', component: LoginComponent},
   {path: '**', redirectTo: ''}
 ];
 
