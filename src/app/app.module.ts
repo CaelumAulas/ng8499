@@ -2,10 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoginModule } from './modules/login/login.module';
-import { CaixaDeEntradaModule } from './modules/caixa-de-entrada/caixa-de-entrada.module';
-import { CadastroModule } from './modules/cadastro/cadastro.module';
-import { ModuloRoteamento } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +10,7 @@ import { ModuloRoteamento } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    LoginModule,
-    CaixaDeEntradaModule,
-    CadastroModule,
-    ModuloRoteamento
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,8 +3,7 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cmail-caixa-de-entrada',
-  templateUrl: './caixa-de-entrada.component.html',
-  styleUrls: ['./caixa-de-entrada.component.css']
+  templateUrl: './caixa-de-entrada.component.html'
 })
 export class CaixaDeEntradaComponent implements OnInit {
 
