@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -21,9 +21,20 @@ export class LoginComponent implements OnInit {
   constructor(
     private roteador: Router
     ,private servico: LoginService
+    ,private rota: ActivatedRoute
     ) { }
 
   ngOnInit() {
+
+    /* this.rota.params.subscribe( parametros => console.log(parametros))
+    this.rota.queryParams.subscribe( parametros => console.log(parametros)) */
+
+    const parametros = this.rota.snapshot.params;
+
+    if(parametros.username){
+      this.login.email = `${parametros.username}@cmail.com.br`;
+    }
+
   }
 
   handleLogin(formLogin: NgForm) {

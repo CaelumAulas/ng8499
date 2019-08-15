@@ -3,16 +3,19 @@
     <main class="mdl-layout__content">
       <div class="page-content">
 
+        <section>
+          <ul>
+            <cmail-list-item
+              *ngFor="let email of listaEmails"
+              [destinatario]="email.destinatario"
+              [assunto]="email.assunto"
+              [conteudo]="email.conteudo"
+              [dataEnvio]="email.dataEnvio">
+            </cmail-list-item>
+          </ul>
+        </section>
+
         <div class="mdl-grid">
-          <section>
-            <ul>
-              <li *ngFor="let email of listaEmails">
-                {{email.destinatario}}
-                {{email.assunto}}
-                {{email.conteudo}}
-              </li>
-            </ul>
-          </section>
 
           <!-- Floating Multiline Textfield -->
           <button (click)="toggleEmailForm()" class="globalFab tooltip btn mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
