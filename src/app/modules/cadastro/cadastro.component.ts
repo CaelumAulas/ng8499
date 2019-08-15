@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpResponseBase } from '@angular/common
 import { UserInputDTO } from 'src/app/models/dto/user-input';
 import { Router } from '@angular/router';
 import { map, catchError } from "rxjs/operators";
+import { CadastroService } from 'src/app/services/cadastro.service';
 
 @Component({
   selector: 'cmail-cadastro',
@@ -28,7 +29,9 @@ export class CadastroComponent implements OnInit {
 
   mensagemErro = "";
 
-  constructor(private http: HttpClient, private roteador: Router) {}
+  constructor(private http: HttpClient
+            ,private roteador: Router
+            ,private servico: CadastroService) {}
 
   ngOnInit() {}
 
@@ -61,15 +64,12 @@ export class CadastroComponent implements OnInit {
       return
     }
 
-    const dadosForm = this.formCadastro.value;
-    const cadastroDTO = new UserInputDTO(dadosForm);
-
-    this.http
-        .post("http://localhost:3200/users", cadastroDTO)
+    this.servico
+        .cadastrar(this.formCadastro.value)
         .subscribe (
           (response) => {
             console.log(response);
-            this.roteador.navigate(['login', cadastroDTO.username])
+            this.roteador.navigate(['login', this.formCadastro.get('username').value])
           }
           ,(erro: HttpErrorResponse) => {
             console.log(erro.error.body[0].message);
