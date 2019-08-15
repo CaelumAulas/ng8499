@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
-import { SharedComponentsModule } from './components/shared-components.module';
+import { AuthGuard } from './guards/auth.guard';
 
 const rotasApp:Routes = [
   {
@@ -19,6 +19,7 @@ const rotasApp:Routes = [
     path: '',
     loadChildren: () => import('./modules/caixa-de-entrada/caixa-de-entrada.module').then(m => m.CaixaDeEntradaModule)
     ,pathMatch: 'full'
+    ,canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -33,6 +34,9 @@ const rotasApp:Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AppRoutingModule {}

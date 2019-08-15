@@ -37,10 +37,7 @@ export class LoginComponent implements OnInit {
     this.servico
         .autenticar(this.login)
         .subscribe(
-          response => {
-            localStorage.setItem('cmail-token',response.token)
-            this.roteador.navigate(['']);
-          }
+          () => this.roteador.navigate([''])
           ,(erro: HttpErrorResponse) => {
             console.log(erro);
             this.errorMessage = 'Oops, credenciais inválidas'
