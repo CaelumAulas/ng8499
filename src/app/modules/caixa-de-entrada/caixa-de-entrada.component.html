@@ -1,16 +1,21 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-    <cmail-header></cmail-header>
+    <cmail-header (enviaFiltro)="textoDigitadoFiltro = $event"></cmail-header>
     <main class="mdl-layout__content">
       <div class="page-content">
 
         <section>
           <ul>
             <cmail-list-item
-              *ngFor="let email of listaEmails"
+              *ngFor="let email of listaFiltrada()"
               [destinatario]="email.destinatario"
               [assunto]="email.assunto"
               [conteudo]="email.conteudo"
-              [dataEnvio]="email.dataEnvio">
+              [dataEnvio]="email.dataEnvio"
+
+              [title]="email.id"
+
+              (clicouNaLixeira)="apagar(email.id)"
+              >
             </cmail-list-item>
           </ul>
         </section>

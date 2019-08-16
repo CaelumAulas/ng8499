@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmailService {
 
-  readonly url = environment.api+'emails'
+  readonly url = environment.api+'emails/'
   readonly headers = {
     headers: new HttpHeaders({'Authorization': localStorage.getItem('cmail-token')})
   }
@@ -29,6 +29,12 @@ export class EmailService {
                     return listaEmailsApi.map( emailIngles => new EmailOutputDTO(emailIngles))
                   })
                 )
+  }
+
+  deletar(emailId): Observable<Object> {
+    return this
+            .http
+            .delete(this.url+emailId,this.headers)
   }
 
 }

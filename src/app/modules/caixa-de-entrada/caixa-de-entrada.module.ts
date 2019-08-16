@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CaixaDeEntradaRoutingModule } from './caixa-de-entrada-routing.module';
 import { EmailService } from 'src/app/services/email.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PageDataService } from 'src/app/services/page-data.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ]
   ,providers: [
-    EmailService
+    EmailService,
+    PageDataService
   ]
 })
 export class CaixaDeEntradaModule { }

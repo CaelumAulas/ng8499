@@ -3,7 +3,7 @@
   <span class="mdl-list__item-primary-content">
     <a class="emailList__itemLink">
       <i class="material-icons mdl-list__item-avatar">person</i>
-      <span>{{destinatario}}: {{assunto}}</span>
+      <span>{{destinatario | urgencia }}: {{assunto}}</span>
       <span class="emailList__itemText mdl-list__item-text-body">
         {{conteudo | slice:0:140 }}
       </span>
@@ -18,7 +18,7 @@
   </span>
 
   <span class="emailList__itemMenu">
-    <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+    <button (click)="deletar()" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
       <i class="material-icons">delete</i>
     </button>
   </span>
